@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,28 +7,22 @@ using Microsoft.ML.OnnxRuntime.Tensors;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-public class Program
+public class ImageClassifier
 {
-    public static void Main(string[] args)
+     string imageOnnxPath;
+     string textOnnxPath;
+     string textEmbeddingsPath;
+     public ImageClassifier( string _imageOnnxPath,
+     string _textOnnxPath,
+     string _textEmbeddingsPath)
     {
-        string screenshotPath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"Screenshots");
-        if (!Directory.Exists(screenshotPath)){
-            Directory.CreateDirectory(screenshotPath);
-            Console.WriteLine("Folder Created at : "+screenshotPath);
-        }
-        else Console.WriteLine("Folder Exists at : "+screenshotPath);
-        Console.WriteLine("Access Done to the Screenshots Folder");
-        if(args.Length>0)
-        {
-            if (args[1] == "organize")
-            {
-                
-            }
-        }
-            string imagePath = args[0];
-            string imageOnnxPath = "/home/tojan/Documents/Python Projects/snapctl/py/clip_image.onnx";
-            string textOnnxPath = "/home/tojan/Documents/Python Projects/snapctl/py/clip_text.onnx";
-            string textEmbeddingsPath = "/home/tojan/Documents/Python Projects/snapctl/text_embeddings.bin";
+        imageOnnxPath=_imageOnnxPath;
+        textOnnxPath=_textOnnxPath;
+        textEmbeddingsPath=_textEmbeddingsPath;
+    }
+    public void classifyImage(string imagePath)
+    {
+           
         using Image<Rgb24> image = Image.Load<Rgb24>(imagePath);
         image.Mutate(x => x.Resize(new ResizeOptions { Size = new Size(224, 224), Mode = ResizeMode.Crop }));
 
@@ -50,7 +44,6 @@ public class Program
         int[] dimensions = new int[] { 1, 3, 224, 224 };
          var inputTensor = new DenseTensor<float>(imageData, dimensions);
          
-         
         var inputs = new List<NamedOnnxValue>
         {
             NamedOnnxValue.CreateFromTensor("image", inputTensor)
@@ -67,10 +60,8 @@ public class Program
         for (int i = 0; i < imageFeatures.Length; i++)
             imageFeatures[i] /= norm;
         
-        
-        Console.WriteLine("Output length: " + imageFeatures.Length);
-        
-        string[] labels = { "a photo of a person", "code on a screen", "text on screen", "other" };
+            
+        string[] labels = { "Person","Documents","Code", "Browser","Chat","Games", "other" };
         byte[] embedBytes = File.ReadAllBytes(textEmbeddingsPath);
         float[] textFeatures = new float[embedBytes.Length / 4];
         Buffer.BlockCopy(embedBytes, 0, textFeatures, 0, embedBytes.Length);
@@ -94,6 +85,4 @@ public class Program
 
 
     }
-    
-
 }
