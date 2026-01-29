@@ -3,13 +3,16 @@ public class OrganizeCommand : ICommand
     public void Execute(string args)
     {
         string screenshotPath=args;
+       CreateDirectories(screenshotPath);
+        Console.WriteLine(args);
+    }
+    public void CreateDirectories(string path)
+    {
         for(int i = 0; i < Categories.categories.Length; i++)
         {
-            CreateDirectory(screenshotPath,Categories.categories[i]);
-
+            CreateDirectory(path,Categories.categories[i]);
         }
 
-        Console.WriteLine(args);
     }
     public void CreateDirectory(string path,string dirName)
     {
