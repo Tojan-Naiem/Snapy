@@ -11,19 +11,24 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string screenshotPath=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"Screenshots");
-        if (!Directory.Exists(screenshotPath)){
-            Directory.CreateDirectory(screenshotPath);
-            Console.WriteLine("Folder Created at : "+screenshotPath);
-        }
-        else Console.WriteLine("Folder Exists at : "+screenshotPath);
-        Console.WriteLine("Access Done to the Screenshots Folder");
+     
         if(args.Length>0)
         {
+            if (args[0] == "snapy")
+            {
+            ICommand command=null;
+            int startIndex=2,count=startIndex-1;
             if (args[1] == "organize")
             {
-                
+                command=new OrganizeCommand();
+                count=startIndex-1;
             }
+
+
+            if(command!=null)
+            command.Execute(string.Join(" ",args,startIndex,count));
+            }
+           
         }
         
     }
