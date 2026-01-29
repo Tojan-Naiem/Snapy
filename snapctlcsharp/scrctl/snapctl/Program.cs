@@ -12,8 +12,8 @@ public class Program
     public static void Main(string[] args)
     {
         string imagePath = "/home/tojan/Pictures/toji.jpg";
-        string imageOnnxPath = "/home/tojan/Documents/Python Projects/snapctl/clip_image.onnx";
-        string textOnnxPath = "/home/tojan/Documents/Python Projects/snapctl/clip_text.onnx";
+        string imageOnnxPath = "/home/tojan/Documents/Python Projects/snapctl/py/clip_image.onnx";
+        string textOnnxPath = "/home/tojan/Documents/Python Projects/snapctl/py/clip_text.onnx";
         string textEmbeddingsPath = "/home/tojan/Documents/Python Projects/snapctl/text_embeddings.bin";
         using Image<Rgb24> image = Image.Load<Rgb24>(imagePath);
         image.Mutate(x => x.Resize(new ResizeOptions { Size = new Size(224, 224), Mode = ResizeMode.Crop }));
