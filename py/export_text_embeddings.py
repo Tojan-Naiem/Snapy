@@ -5,7 +5,7 @@ import numpy as np
 device = "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
 
-labels = ["a photo of a person", "code on a screen", "text on screen", "other"]
+labels = ["Person","Documents","Code", "Browser","Chat","Games", "other"]
 text = clip.tokenize(labels).to(device)
 
 with torch.no_grad():
