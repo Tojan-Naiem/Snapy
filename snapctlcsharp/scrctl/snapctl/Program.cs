@@ -23,6 +23,9 @@ public class Program
                 command=new OrganizeCommand();
                 count=startIndex-1;
             }
+            else if(args[1]=="search")
+                {
+                }
 
 
             if(command!=null)
