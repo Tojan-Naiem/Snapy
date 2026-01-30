@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using Microsoft.ML.OnnxRuntime;
@@ -23,8 +24,13 @@ public class Program
                 command=new OrganizeCommand();
                 count=startIndex-1;
             }
-            else if(args[1]=="search")
+                else if(args[1]=="search")
                 {
+                    DBConnection dBConnection=new DBConnection();
+                    dBConnection.SetUpDatabase();
+                    command=new SearchCommand();
+                    
+
                 }
 
 
