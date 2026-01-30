@@ -12,13 +12,10 @@ public class OrganizeCommand : ICommand
         string path=args;
         string [] myFiles=Directory.GetFiles(path);
         CreateDirectories(path);
-        Console.WriteLine("My files : ");
         foreach(var filePath in myFiles)
         {
            string dirName=ImageClassifier.classifyImage(filePath);
            string newFilePath=path+"/"+dirName+"/"+filePath.Substring(filePath.LastIndexOf("/"));
-           Console.WriteLine(filePath);
-           Console.WriteLine(newFilePath);
            File.Copy(filePath,newFilePath);
            File.Delete(filePath);
         }
