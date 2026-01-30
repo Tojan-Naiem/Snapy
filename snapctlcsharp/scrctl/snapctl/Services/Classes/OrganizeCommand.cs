@@ -5,10 +5,13 @@ public class OrganizeCommand : ICommand
     private ImageClassifier ImageClassifier;
     public void Execute(string args)
     {
+        // create Image Classifier and add pathes for onnx
         ImageClassifier=new ImageClassifier("/home/tojan/Documents/Python Projects/snapctl/py/clip_image.onnx",
         "/home/tojan/Documents/Python Projects/snapctl/py/clip_text.onnx",
         "/home/tojan/Documents/Python Projects/snapctl/py/text_embeddings.bin"
         );
+        try
+        {
         string path=args;
         string [] myFiles=Directory.GetFiles(path);
         CreateDirectories(path);
@@ -20,6 +23,12 @@ public class OrganizeCommand : ICommand
            File.Delete(filePath);
         }
 
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+       
     }
     public void CreateDirectories(string path)
     {
