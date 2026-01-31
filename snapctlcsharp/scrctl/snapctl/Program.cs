@@ -24,8 +24,6 @@ public class Program
             }
                 else if(args[1]=="search")
                 {
-                    DBConnection dBConnection=new DBConnection();
-                    dBConnection.SetUpDatabase();
                     command=new SearchCommand();
                     
 

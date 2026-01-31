@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Tesseract;
 
 public class ImageTextExtractor
@@ -6,10 +7,13 @@ public class ImageTextExtractor
     {
         try
         {
+            DBConnection connection=new DBConnection();
+            connection.SetUpDatabase();
             string [] myFiles=Directory.GetFiles(folderPath);
             foreach(var file in myFiles)
             {
                 var text =ExtractTextFromImage(file,"eng+ara");
+                connection.InsertData(text);
             }
             
         }catch(Exception e)
