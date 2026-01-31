@@ -27,11 +27,11 @@ public class ImageTextExtractor
     {
         // for extract image with each language
         string tessPath="/home/tojan/Documents/Python Projects/snapctl/tessdata";
-        using (TesseractEngine enginge =new TesseractEngine(tessPath, lang, EngineMode.Default))
+       using (var engine = new TesseractEngine(tessPath, lang, EngineMode.Default, "liblept.so.5"))
         {
             using (Pix pix = Pix.LoadFromFile(filePath))
         {
-            using (Tesseract.Page page = enginge.Process(pix))
+            using (Tesseract.Page page = engine.Process(pix))
             {
                 return page.GetText();
             }
