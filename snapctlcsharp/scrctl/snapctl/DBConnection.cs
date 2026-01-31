@@ -6,7 +6,7 @@ public class DBConnection
     private SqliteConnection sqliteConnection;
     public DBConnection()
     {
-        sqliteConnection=new SqliteConnection("Data Source=textFiles.dn");
+        sqliteConnection=new SqliteConnection("Data Source=textFiles.db");
     }
     public void SetUpDatabase()
     {
@@ -30,7 +30,7 @@ public class DBConnection
 
          SqliteCommand sqlite_cmd;
         using var command =sqliteConnection.CreateCommand();
-        string CreateTable="CREATE TABLE ImageText (Id INT PRIMARY KEY AUTOINCREMENT , Text VARCHAR(1000))";
+        string CreateTable="CREATE TABLE IF NOT EXISTS ImageText (Id INT PRIMARY KEY  , Text TEXT)";
         sqlite_cmd=sqliteConnection.CreateCommand();
         sqlite_cmd.CommandText=CreateTable;
         sqlite_cmd.ExecuteNonQuery();

@@ -9,11 +9,14 @@ public class SearchCommand : ICommand
         }
         string FolderPath=args[4];
         string searchData=args[2];
-        if (Directory.Exists(FolderPath))
+      
+        if (!Directory.Exists(FolderPath))
         {
+            
             Console.WriteLine("Invalid Path!");
             return ;
         }
+        ImageTextExtractor.Extract(FolderPath);
 
     }
 
