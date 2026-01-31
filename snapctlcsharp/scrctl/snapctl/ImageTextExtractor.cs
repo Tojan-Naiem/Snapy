@@ -3,7 +3,7 @@ using Tesseract;
 
 public class ImageTextExtractor
 {
-    public void Extract(string folderPath)
+    public static void Extract(string folderPath)
     {
         try
         {
@@ -23,7 +23,7 @@ public class ImageTextExtractor
 
         
     }
-    public string ExtractTextFromImage(string filePath,string lang)
+    public static string ExtractTextFromImage(string filePath,string lang)
     {
         // for extract image with each language
         string tessPath="/home/tojan/Documents/Python Projects/snapctl/tessdata";

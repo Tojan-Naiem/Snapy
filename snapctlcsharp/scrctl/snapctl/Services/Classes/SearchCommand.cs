@@ -14,6 +14,7 @@ public class SearchCommand : ICommand
             Console.WriteLine("Invalid Path!");
             return ;
         }
+        ImageTextExtractor.Extract(FolderPath);
 
     }
 
