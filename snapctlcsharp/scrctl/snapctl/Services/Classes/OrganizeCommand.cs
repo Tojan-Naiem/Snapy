@@ -3,7 +3,7 @@ using SixLabors.ImageSharp;
 public class OrganizeCommand : ICommand
 {
     private ImageClassifier ImageClassifier;
-    public void Execute(string args)
+    public void Execute(string []args)
     {
         // create Image Classifier and add pathes for onnx
         ImageClassifier=new ImageClassifier("/home/tojan/Documents/Python Projects/snapctl/py/clip_image.onnx",
@@ -12,7 +12,18 @@ public class OrganizeCommand : ICommand
         );
         try
         {
-        string path=args;
+        if (args.Length != 3)
+        {
+            Console.WriteLine("Use the required structure!");
+            return;
+        }
+        string path=args[2];
+        Console.WriteLine(path);
+            if (!Directory.Exists(path))
+            {
+                Console.WriteLine("Unvalid Path!");
+                return;
+            }
         string [] myFiles=Directory.GetFiles(path);
         CreateDirectories(path);
         foreach(var filePath in myFiles)

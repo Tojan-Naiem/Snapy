@@ -1,4 +1,4 @@
 public interface ICommand
 {
-    public void Execute(string args);
+    public void Execute(string[] args);
 }

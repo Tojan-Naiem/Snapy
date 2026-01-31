@@ -35,7 +35,7 @@ public class Program
 
 
             if(command!=null)
-            command.Execute(string.Join(" ",args,startIndex,count));
+            command.Execute(args);
             }
            
         }
