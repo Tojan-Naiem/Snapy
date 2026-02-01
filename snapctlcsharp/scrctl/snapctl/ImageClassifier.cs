@@ -61,7 +61,7 @@ public class ImageClassifier
             imageFeatures[i] /= norm;
         
             
-        string[] labels = { "Person","Documents","Code", "Browser","Chat","Games", "other" };
+        string[] labels =Categories.categories;
         byte[] embedBytes = File.ReadAllBytes(textEmbeddingsPath);
         float[] textFeatures = new float[embedBytes.Length / 4];
         Buffer.BlockCopy(embedBytes, 0, textFeatures, 0, embedBytes.Length);
