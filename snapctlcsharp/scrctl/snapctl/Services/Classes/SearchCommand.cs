@@ -12,7 +12,6 @@ public class SearchCommand : ICommand
       
         if (!Directory.Exists(FolderPath))
         {
-            
             Console.WriteLine("Invalid Path!");
             return ;
         }

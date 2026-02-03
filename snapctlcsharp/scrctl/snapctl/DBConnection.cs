@@ -46,6 +46,7 @@ public class DBConnection
     {
          try
         {
+         sqliteConnection.Open();
 
          SqliteCommand sqlite_cmd;
         using var command =sqliteConnection.CreateCommand();
@@ -60,6 +61,7 @@ public class DBConnection
          Console.WriteLine("Exception in sqlite "+ex.GetBaseException());
 
         }
-        
+                sqliteConnection.Close();
+
     }
 }

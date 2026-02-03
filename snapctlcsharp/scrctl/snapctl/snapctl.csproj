@@ -13,12 +13,12 @@
       <PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.23.2" />
       <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
       <PackageReference Include="Tesseract" Version="5.2.0" />
-      <None Include="../../Models\**\*"> 
+      <!-- <None Include="../../Models\**\*"> 
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
        </None> 
        <None Include="../../tessdata\**\*"> 
        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> 
-       </None>
+       </None> -->
     </ItemGroup>
 
 </Project>
