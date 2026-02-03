@@ -1,10 +1,10 @@
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 
-public class DBConnection
+public class ImageTextRepository
 {
     private SqliteConnection sqliteConnection;
-    public DBConnection()
+    public ImageTextRepository()
     {
         sqliteConnection = new SqliteConnection("Data Source=textFiles.db");
     }

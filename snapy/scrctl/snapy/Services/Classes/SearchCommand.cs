@@ -17,7 +17,7 @@ public class SearchCommand : ICommand
             return ;
         }
         ImageTextExtractor.Extract(FolderPath);
-        DBConnection.SearchTextFromDBS(searchData);
+        ImageTextRepository.SearchTextFromDBS(searchData);
 
     }
 

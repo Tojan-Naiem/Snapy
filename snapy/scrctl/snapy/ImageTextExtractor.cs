@@ -17,7 +17,7 @@ public class ImageTextExtractor
     {
         try
         {
-            DBConnection connection = new DBConnection();
+            ImageTextRepository connection = new ImageTextRepository();
             connection.SetUpDatabase();
             string[] myFiles = Directory.GetFiles(folderPath);
             foreach (var file in myFiles)
