@@ -22,8 +22,12 @@ public class ImageTextExtractor
             string[] myFiles = Directory.GetFiles(folderPath);
             foreach (var file in myFiles)
             {
-                var text = ExtractTextFromImage(file, "eng+ara");
-                connection.InsertData(file,text);
+                if (!connection.IsImageProcessed(file))
+                {
+                    var text = ExtractTextFromImage(file, "eng+ara");
+                    connection.InsertData(file, text);
+                }
+
             }
         }
         catch (Exception e)
@@ -32,26 +36,26 @@ public class ImageTextExtractor
         }
     }
 
-   public static string ExtractTextFromImage(string filePath, string lang)
-{
-    var psi = new ProcessStartInfo
+    public static string ExtractTextFromImage(string filePath, string lang)
     {
-        FileName = "tesseract",
-        Arguments = $"\"{filePath}\" stdout -l {lang}",
-        RedirectStandardOutput = true,
-        RedirectStandardError = true,
-        UseShellExecute = false,
-        CreateNoWindow = true
-    };
+        var psi = new ProcessStartInfo
+        {
+            FileName = "tesseract",
+            Arguments = $"\"{filePath}\" stdout -l {lang}",
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
 
-    using var process = Process.Start(psi);
-    string output = process.StandardOutput.ReadToEnd();
-    string error = process.StandardError.ReadToEnd();
-    process.WaitForExit();
+        using var process = Process.Start(psi);
+        string output = process.StandardOutput.ReadToEnd();
+        string error = process.StandardError.ReadToEnd();
+        process.WaitForExit();
 
-    if (process.ExitCode != 0)
-        throw new Exception($"Tesseract error: {error}");
+        if (process.ExitCode != 0)
+            throw new Exception($"Tesseract error: {error}");
 
-    return output;
-}
+        return output;
+    }
 }

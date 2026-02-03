@@ -119,9 +119,9 @@ public class DBConnection
                 SqliteDataReader r = md.ExecuteReader();
                 if (!r.HasRows)
                 {
-                    return false;
+                    return true;
                 }
-                return true;
+                return false;
 
             }       
 
@@ -129,4 +129,5 @@ public class DBConnection
         }
 
     }
+
 }
