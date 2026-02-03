@@ -137,8 +137,27 @@ public class DBConnection
         }
 
     }
-    public void CleanDB()
+    public void CleanImageTextInDB()
     {
+         try
+        {
+            using (SqliteConnection conn = new SqliteConnection("Data Source=textFiles.db"))
+            {
+                conn.Open();
+                using (SqliteCommand md = conn.CreateCommand())
+                {
+                    md.CommandText = "DELETE FROM ImageText";
+                    md.ExecuteNonQuery();
+                  
+                }
+
+
+            }
+        }
+        catch (SqliteException ex)
+        {
+            Console.WriteLine("Exception in sqlite " + ex.GetBaseException());
+        }
 
     }
 
