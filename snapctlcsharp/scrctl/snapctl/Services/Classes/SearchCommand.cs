@@ -1,3 +1,4 @@
+
 public class SearchCommand : ICommand
 {
         public void Execute(string[] args)
@@ -16,6 +17,7 @@ public class SearchCommand : ICommand
             return ;
         }
         ImageTextExtractor.Extract(FolderPath);
+        DBConnection.SearchTextFromDBS(searchData);
 
     }
 

@@ -23,7 +23,7 @@ public class ImageTextExtractor
             foreach (var file in myFiles)
             {
                 var text = ExtractTextFromImage(file, "eng+ara");
-                connection.InsertData(text);
+                connection.InsertData(file,text);
             }
         }
         catch (Exception e)
