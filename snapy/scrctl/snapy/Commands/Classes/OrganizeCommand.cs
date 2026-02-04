@@ -6,9 +6,10 @@ public class OrganizeCommand : ICommand
     public void Execute(string []args)
     {
         // create Image Classifier and add pathes for onnx
-        ImageClassifier=new ImageClassifier("/home/tojan/Documents/Python Projects/snapctl/Models/clip_image.onnx",
-        "/home/tojan/Documents/Python Projects/snapctl/Models/clip_text.onnx",
-        "/home/tojan/Documents/Python Projects/snapctl/Models/text_embeddings.bin"
+        ImageClassifier=new ImageClassifier(
+            ModelPaths.ImageOnnx,
+            ModelPaths.TextOnnx,
+            ModelPaths.TextEmbeddings
         );
         try
         {
