@@ -1,4 +1,4 @@
-public static class ModelPaths
+public class ModelPaths
 {
     private static readonly string BaseDir = Path.GetDirectoryName(
         System.Reflection.Assembly.GetExecutingAssembly().Location
