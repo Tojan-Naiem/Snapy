@@ -41,5 +41,22 @@ public class DirectoryService
         if(Directory.Exists(dirPath))return true;
         else return false;
     }
+    public static string LastAccessTime(string dirPath)
+    {
+        string date="";
+           try
+        {
+            foreach (var file in Directory.EnumerateFiles(dirPath, "*", SearchOption.AllDirectories))
+            {
+                date=FileService.GetLastAccessTime(file);
+                break;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception while getting files length: " + e.Message);
+        }
+        return date;
+    }
      
 }

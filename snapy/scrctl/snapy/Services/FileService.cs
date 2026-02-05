@@ -14,5 +14,20 @@ public class FileService
         return -1;
          }
     }
+    public static string GetLastAccessTime(string filePath)
+    {
+         try
+        {
+         FileInfo info=new FileInfo(filePath);
+         string date=info.LastAccessTime.ToString("F");
+         return date;
+
+        }catch(Exception e)
+        {
+        Console.WriteLine("Exception while getting file access time: " + e.Message);
+        return null;
+         }
+    }
+
     
 }

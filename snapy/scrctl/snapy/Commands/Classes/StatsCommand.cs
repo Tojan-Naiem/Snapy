@@ -29,6 +29,8 @@ public class StatsCommand:ISnapyCommand
             Console.WriteLine($"{category} : {countCategory}");
             
         }
+        Console.WriteLine($"Last organized : {DirectoryService.LastAccessTime(FolderPath)}");
+
     }
    
     
