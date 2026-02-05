@@ -16,6 +16,8 @@ public class StatsCommand:ISnapyCommand
             return ;
         }
         Console.WriteLine("Total files :"+DirService.CountFiles(FolderPath));
+        Console.WriteLine($"Total size: {DirService.TotoalFilesLength(FolderPath)}");
+
         
     }
    
