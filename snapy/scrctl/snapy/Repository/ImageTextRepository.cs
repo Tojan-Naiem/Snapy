@@ -1,4 +1,5 @@
 using System.Data.Common;
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.Data.Sqlite;
 
 public class ImageTextRepository
@@ -138,7 +139,7 @@ public class ImageTextRepository
     }
     public void CleanImageTextInDB()
     {
-         try
+        try
         {
             using (SqliteConnection conn = new SqliteConnection("Data Source=textFiles.db"))
             {
@@ -147,7 +148,7 @@ public class ImageTextRepository
                 {
                     md.CommandText = "DELETE FROM ImageText";
                     md.ExecuteNonQuery();
-                  
+
                 }
 
 
@@ -156,6 +157,37 @@ public class ImageTextRepository
         catch (SqliteException ex)
         {
             Console.WriteLine("Exception in sqlite " + ex.GetBaseException());
+        }
+
+    }
+
+    public string GetImageText(string path)
+    {
+        try
+        {
+            using (SqliteConnection conn = new SqliteConnection("Data Source=textFiles.db"))
+            {
+                conn.Open();
+                using (SqliteCommand md = conn.CreateCommand())
+                {
+                    md.CommandText = "SELECT DISTINCT Text FROM ImageText WHERE Path=$path";
+                    md.Parameters.AddWithValue("$path", path);
+                    using var r = md.ExecuteReader();
+                    if (!r.Read()) return null;
+                    if (r.IsDBNull(0)) return null;
+                    string text = r.GetString(0);
+
+                    return text;
+
+                }
+
+
+            }
+        }
+        catch (SqliteException ex)
+        {
+            Console.WriteLine("Exception in sqlite " + ex.GetBaseException());
+            return null;
         }
 
     }

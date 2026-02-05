@@ -36,6 +36,24 @@ public class ImageTextExtractor
             Console.WriteLine("Exception in the extract method in ImageTextExtractor " + e.GetBaseException());
         }
     }
+    public static void ExtractSingle(string filePath)
+    {
+        try
+        {
+            ImageTextRepository connection = new ImageTextRepository();
+            connection.SetUpDatabase();
+            if (!connection.IsImageProcessed(filePath))
+                {
+                    var text = ExtractTextFromImage(filePath, "eng+ara");
+                    connection.InsertData(filePath, text);
+                    Console.WriteLine("Done");
+                }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception in the extract method in ImageTextExtractor " + e.GetBaseException());
+        }
+    }
 
     public static string ExtractTextFromImage(string filePath, string lang)
     {

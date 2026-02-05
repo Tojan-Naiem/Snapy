@@ -1,3 +1,6 @@
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+
 public class FileService
 {
     public static long GetFileLength(string filePath)
@@ -28,6 +31,27 @@ public class FileService
         return null;
          }
     }
+   
+public static (int width, int height) GetImageDimensions(string path)
+{
+    using (var image = Image.Load<Rgba32>(path))
+    {
+        return (image.Width, image.Height);
+    }
+}
+public static string GetFileCreationTime(string filePath)
+    {
+          try
+        {
+         FileInfo info=new FileInfo(filePath);
+         string date=info.CreationTime.ToString("F");
+         return date;
 
+        }catch(Exception e)
+        {
+        Console.WriteLine("Exception while getting file creation time: " + e.Message);
+        return null;
+         }
+    }
     
 }

@@ -16,7 +16,6 @@ public class SearchCommand : ISnapyCommand
             Console.WriteLine("Invalid Path!");
             return ;
         }
-        ImageTextExtractor.Extract(FolderPath);
         ImageTextRepository.SearchTextFromDBS(searchData);
 
     }

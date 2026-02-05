@@ -39,7 +39,9 @@ public class Program
             "ORGANIZE" => new OrganizeCommand(),
             "SEARCH" => new SearchCommand(),
             "RESTART" => new RestartCommand(),
-            "STATS"=>new StatsCommand()
+            "STATS"=>new StatsCommand(),
+            "INFO"=>new InfoCommand()
+
         };
         if (command == null)
         {
@@ -51,6 +53,7 @@ public class Program
 
         try
         {
+
             command.Execute(args);
 
         }
