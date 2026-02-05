@@ -15,8 +15,8 @@ public class StatsCommand:ISnapyCommand
             Console.WriteLine("Invalid Path!");
             return ;
         }
-        Console.WriteLine("Total files :"+DirService.CountFiles(FolderPath));
-        Console.WriteLine($"Total size: {DirService.TotoalFilesLength(FolderPath)}");
+        Console.WriteLine("Total files :"+DirectoryService.CountFiles(FolderPath));
+        Console.WriteLine($"Total size: {DirectoryService.TotoalFilesLength(FolderPath)}");
 
         
     }

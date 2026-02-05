@@ -13,36 +13,14 @@ public class RestartCommand : ISnapyCommand
             Console.WriteLine("Invalid Path!");
             return ;
         }
-        if (!CheckDirectories(FolderPath))
+        if (!CategoryDirectoryService.CheckDirectories(FolderPath))
         {
              Console.WriteLine("THIS folder Doesn't organized before !");
              return ;
         }
-        DeleteDirectories(FolderPath);
+        CategoryDirectoryService.DeleteAllCategoryDirectories(FolderPath);
         Console.WriteLine("Succcessfully Restart ! ");
     }
-    public bool CheckDirectories(string folderPath)
-    {
-        foreach(var s in Categories.categories)
-        if(!Directory.Exists(folderPath+"/"+s))
-         return false;
-        return true;
-        
-    }
-    public void DeleteDirectories(string folderPath)
-    {
-        foreach(var s in Categories.categories)
-        {
-            string dirPath=folderPath+"/"+s;
-            string []myFiles=Directory.GetFiles(dirPath);
-        foreach(var filePath in myFiles)
-        {
-           string newPathFile=folderPath+"/"+filePath.Substring(filePath.LastIndexOf("/"));
-           File.Copy(filePath,newPathFile);
-           File.Delete(filePath);
-        }
-        Directory.Delete(dirPath);
-        }
-
-    }
+   
+  
 }

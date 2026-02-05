@@ -1,5 +1,5 @@
 
-public class DirService
+public class DirectoryService
 {
     public static int CountFiles(string dirPath)
     {
@@ -36,4 +36,5 @@ public class DirService
         }
         return $"{size:F2}{units[unit]}";
     }
+     
 }
