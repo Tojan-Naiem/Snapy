@@ -19,7 +19,7 @@ public class RestartCommand : ICommand
              return ;
         }
         DeleteDirectories(FolderPath);
-        
+        Console.WriteLine("Succcessfully Restart ! ");
     }
     public bool CheckDirectories(string folderPath)
     {

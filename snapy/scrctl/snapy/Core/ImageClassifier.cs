@@ -82,7 +82,7 @@ public class ImageClassifier
         }
 
         int bestIndex = Array.IndexOf(simiaritites, simiaritites.Max());
-        Console.WriteLine($"📂 Classified as: {labels[bestIndex]}");
+        Console.WriteLine($"📂 Classified {imagePath} as: {labels[bestIndex]}");
         return labels[bestIndex];
 
     }

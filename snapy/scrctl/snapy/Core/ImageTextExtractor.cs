@@ -24,7 +24,7 @@ public class ImageTextExtractor
             {
                 if (!connection.IsImageProcessed(file))
                 {
-                    Console.WriteLine("I'm in at : "+file);
+                   // Console.WriteLine("I'm in at : "+file);
                     var text = ExtractTextFromImage(file, "eng+ara");
                     connection.InsertData(file, text);
                 }
