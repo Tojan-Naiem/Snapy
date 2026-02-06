@@ -25,14 +25,12 @@ Snapy automatically analyzes and categorizes your screenshots using AI, extracts
 wget https://github.com/yourusername/snapy/releases/latest/download/snapy-v1.0.0-linux-x64.zip
 unzip snapy-v1.0.0-linux-x64.zip
 cd linux-x64
-./install.sh
 ```
 
 **Windows:**
 1. Download `snapy-v1.0.0-win-x64.zip` from [Releases](https://github.com/yourusername/snapy/releases)
 2. Extract to a folder
 3. Install [Tesseract OCR](https://github.com/UB-Mannheim/tesseract/wiki)
-4. Run `install.ps1`
 
 ### Building from Source
 
