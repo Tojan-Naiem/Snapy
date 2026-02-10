@@ -16,7 +16,7 @@ AI-powered screenshot manager with intelligent classification, search, and analy
 
 ```bash
 # Linux
-wget https://github.com/yourusername/snapy/releases/latest/download/snapy-v1.1.0-linux-x64.zip
+wget https://github.com/Tojan-Naiem/snapy/releases/latest/download/snapy-v1.1.0-linux-x64.zip
 unzip snapy-v1.1.0-linux-x64.zip
 cd linux-x64
 ./setup.sh
@@ -29,7 +29,7 @@ cd linux-x64
 **Build from Source**
 
 ```bash
-git clone https://github.com/yourusername/snapy.git
+git clone https://github.com/Tojan-Naiem/snapy.git
 cd snapy
 ./setup.sh
 ```
